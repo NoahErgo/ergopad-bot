@@ -53,32 +53,32 @@ TELEGRAM_API_KEY = os.getenv('TELEGRAM_API_KEY')
 bot = telebot.TeleBot(TELEGRAM_API_KEY)
 
 
-class SyncMap:
-    def __init__(self):
-        self.mapp = {}
-        self.lock = threading.Lock()
+# class SyncMap:
+#     def __init__(self):
+#         self.mapp = {}
+#         self.lock = threading.Lock()
 
-    def get(self, key):
-        self.lock.acquire()
-        if key in self.mapp:
-            self.lock.release()
-            return self.mapp[key]
-        self.lock.release()
-        return None
+#     def get(self, key):
+#         self.lock.acquire()
+#         if key in self.mapp:
+#             self.lock.release()
+#             return self.mapp[key]
+#         self.lock.release()
+#         return None
 
-    def set(self, key, value):
-        self.lock.acquire()
-        self.mapp[key] = value
-        self.lock.release()
+#     def set(self, key, value):
+#         self.lock.acquire()
+#         self.mapp[key] = value
+#         self.lock.release()
 
-    def remove(self, key):
-        self.lock.acquire()
-        if key in self.mapp:
-            del self.mapp[key]
-        self.lock.release()
+#     def remove(self, key):
+#         self.lock.acquire()
+#         if key in self.mapp:
+#             del self.mapp[key]
+#         self.lock.release()
 
 
-unverified = SyncMap()
+# unverified = SyncMap()
 
 
 # @bot.message_handler(func=lambda m: True, content_types=['new_chat_members'])
